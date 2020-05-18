@@ -1,12 +1,34 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
+    <!-- <div id="nav">
+      <router-link to="/">Index</router-link> |
       <router-link to="/about">About</router-link>
-    </div>
+    </div> -->
+	<van-tabbar v-model="active">
+	  <van-tabbar-item name="index" icon="home-o" @click="toIndex">首页</van-tabbar-item>
+	  <van-tabbar-item name="mine" icon="friends-o" @click="toMine">个人中心</van-tabbar-item>
+	</van-tabbar>
     <router-view/>
   </div>
 </template>
+
+<script>
+	export default {
+	  data() {
+	    return {
+	      active: 'index',
+	    };
+	  },
+	  methods:{
+		  toIndex(){
+			  this.$router.push('/');
+		  },
+		  toMine(){
+			  this.$router.push('/mine');
+		  }
+	  }
+	};
+</script>
 
 <style lang="less">
 #app {
